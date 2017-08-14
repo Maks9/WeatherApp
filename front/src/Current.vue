@@ -1,18 +1,17 @@
 <template>
-    <v-layout row>
-        <v-flex xs12 sm12 offset-sm3>
+    <v-layout row-sm1>
+        <v-flex xs12 offset-sm3>
             <v-card>
                 <v-toolbar class="light-blue" dark>
-                    <v-toolbar-side-icon></v-toolbar-side-icon>
-                    <v-toolbar-title>My files</v-toolbar-title>
-                    <v-spacer></v-spacer>
-                    <v-btn icon>
-                        <v-icon>search</v-icon>
-                    </v-btn>
-                    <v-btn icon>
-                        <v-icon>view_module</v-icon>
-                    </v-btn>
+                    <v-toolbar-title h6>Whether in  </v-toolbar-title>
                 </v-toolbar>
+                <v-list-tile-content>
+                    <v-card-title>
+                        <h5>Folders</h5>
+                    </v-card-title>
+                    <v-subheader>Folders</v-subheader>
+                </v-list-tile-content>
+                <v-divider inset></v-divider>
                 <v-list two-line subheader>
                     <v-subheader inset>Folders</v-subheader>
                     <v-list-tile avatar v-for="item in items" v-bind:key="item.title">
