@@ -17,14 +17,10 @@
                 <v-icon>more_vert</v-icon>
             </v-btn>
         </v-toolbar>
-        <!--<some-list/>-->
-        <v-divider inset></v-divider>
-        <v-divider inset></v-divider>
-        <v-divider inset></v-divider>
-        <v-divider inset></v-divider>
-        <v-divider inset></v-divider>
-        <v-divider inset></v-divider>
-        <v-divider inset></v-divider>
+        <v-layout >
+            <some-list/>
+        </v-layout>
+
     </v-app>
 </template>
 
@@ -32,11 +28,11 @@
 
 
 
-//    import someList from './Current.vue'
+    import someList from './Current.vue'
 
     export default {
         name: 'app',
-//        components: {someList}
+        components: {someList}
     }
 </script>
 

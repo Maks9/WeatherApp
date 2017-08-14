@@ -1,59 +1,59 @@
 <template>
-    <div>
     <v-layout row>
-        <v-divider inset></v-divider>
-        <v-divider inset></v-divider>
-        <v-divider inset></v-divider>
-        <v-divider inset></v-divider>
-        <v-divider inset></v-divider>
-        <v-divider inset/>
-        <hr>
-        <hr>
-        <hr>
-        <hr>
-        <hr>
-        <v-divider inset></v-divider>
-
-
+        <v-flex xs12 sm12 offset-sm3>
+            <v-card>
+                <v-toolbar class="light-blue" dark>
+                    <v-toolbar-side-icon></v-toolbar-side-icon>
+                    <v-toolbar-title>My files</v-toolbar-title>
+                    <v-spacer></v-spacer>
+                    <v-btn icon>
+                        <v-icon>search</v-icon>
+                    </v-btn>
+                    <v-btn icon>
+                        <v-icon>view_module</v-icon>
+                    </v-btn>
+                </v-toolbar>
+                <v-list two-line subheader>
+                    <v-subheader inset>Folders</v-subheader>
+                    <v-list-tile avatar v-for="item in items" v-bind:key="item.title">
+                        <v-list-tile-avatar>
+                            <v-icon v-bind:class="[item.iconClass]">{{ item.icon }}</v-icon>
+                        </v-list-tile-avatar>
+                        <v-list-tile-content>
+                            <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+                            <v-list-tile-sub-title>{{ item.subtitle }}</v-list-tile-sub-title>
+                        </v-list-tile-content>
+                        <v-list-tile-action>
+                            <v-btn icon ripple>
+                                <v-icon class="grey--text text--lighten-1">info</v-icon>
+                            </v-btn>
+                        </v-list-tile-action>
+                    </v-list-tile>
+                    <v-divider inset></v-divider>
+                    <v-subheader inset>Files</v-subheader>
+                    <v-list-tile v-for="item in items2" v-bind:key="item.title">
+                        <v-list-tile-avatar>
+                            <v-icon v-bind:class="[item.iconClass]">{{ item.icon }}</v-icon>
+                        </v-list-tile-avatar>
+                        <v-list-tile-content>
+                            <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+                            <v-list-tile-sub-title>{{ item.subtitle }}</v-list-tile-sub-title>
+                        </v-list-tile-content>
+                        <v-list-tile-action>
+                            <v-btn icon ripple>
+                                <v-icon class="grey--text text--lighten-1">info</v-icon>
+                            </v-btn>
+                        </v-list-tile-action>
+                    </v-list-tile>
+                </v-list>
+            </v-card>
+        </v-flex>
     </v-layout>
-        <v-divider inset/>
-        <v-divider inset/>
-        <v-divider inset/>
-        <v-divider inset/>
-        <v-divider inset/>
-        <v-divider inset/>
-        <v-divider inset/>
-        <v-divider inset/>
-        <v-divider inset/>
-        <v-divider inset/>
-        <v-divider inset/>
-        <v-divider/>
-        <v-divider/>
-        <v-divider/>
-        <v-divider/>
-        <v-divider/>
-        <v-divider/>
-        <v-divider/>
-        <v-divider/>
-        <v-divider/>
-        <v-divider/>
-        <v-divider/>
-        <v-divider/>
-        <v-divider/>
-        <v-divider/>
-
-        <!--<hr>-->
-        <!--<hr>-->
-        <!--<hr>-->
-        <!--<hr>-->
-        <!--<hr>-->
-    </div>
 </template>
 
 
 <script>
     export default {
-        name: 'some-list',
         data () {
             return {
                 items: [
