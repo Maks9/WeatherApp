@@ -15,6 +15,10 @@ module.exports = {
                 loader: 'vue-loader',
                 // options: vueLoaderConfig
             },
+            {
+                test: /\.json$/,
+                loader: 'json-loader'
+            },
             // {
             //     test: /\.css$/,
             //     loader: 'style-loader!css-loader'

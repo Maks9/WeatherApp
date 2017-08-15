@@ -42,7 +42,7 @@
 
 <script>
 
-    import axios from "axios";
+//    import axios from "axios";
 
     export default {
         data () {
@@ -88,22 +88,22 @@
                 ]
             }
         },
-        methods: {
-            fetchCurrentWeather() {
-
-                const headers = {
-                    'Content-Type': 'application/json',
-                };
-
-                axios.get(PROPERTIES.HOST + PROPERTIES.CURRENT + '?id=' = , {
-                    params: {
-                        id: this.$route.params.id
-                    },
-                    headers
-                })
-                    .then((response) => {
-                    this.lesson = response.data;
-                });
-            },
+//        methods: {
+//            fetchCurrentWeather() {
+//
+//                const headers = {
+//                    'Content-Type': 'application/json',
+//                };
+//
+//                axios.get(PROPERTIES.HOST + PROPERTIES.CURRENT + '?id=' = , {
+//                    params: {
+//                        id: this.$route.params.id
+//                    },
+//                    headers
+//                })
+//                    .then((response) => {
+//                    this.lesson = response.data;
+//                });
+//            },
     }
 </script>
