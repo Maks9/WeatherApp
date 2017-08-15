@@ -17,15 +17,16 @@
                 <v-icon>more_vert</v-icon>
             </v-btn>
         </v-toolbar>
-        <v-layout class="pt-5">
-            <some-list/>
+        <v-layout class="pt-5 pl-5">
+            <v-flex xs12 sm3>
+                <!--<v-flex xs12 sm2 offset-sm3>-->
+                <some-list/>
+            </v-flex>
         </v-layout>
-
     </v-app>
 </template>
 
 <script>
-
 
 
     import someList from './Current.vue'
