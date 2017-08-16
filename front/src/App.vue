@@ -41,13 +41,14 @@
     import someList from './Current.vue'
     import Autocomplete from 'vue2-autocomplete-js';
     import parced from '../city.list.json';
+    require('../node_modules/vue2-autocomplete-js/dist/style/vue2-autocomplete.css');
 
     export default {
         name: 'app',
         components: {someList, Autocomplete},
         data() {
             return {
-                options: parced
+                options: ["qqqqqq", "wwwww"]
             }
         },
 
@@ -64,6 +65,6 @@
 <!--<style lang="stylus">-->
     <!--@import '../node_modules/vuetify/src/stylus/main.styl',-->
 <!--</style>-->
-<style lang="css">
-    @import '../node_modules/vue2-autocomplete-js/dist/style/vue2-autocomplete.css',
-</style>
+<!--<style lang="css">-->
+    <!--@import '../node_modules/vue2-autocomplete-js/dist/style/vue2-autocomplete.css',-->
+<!--</style>-->
