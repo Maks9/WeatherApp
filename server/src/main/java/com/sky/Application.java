@@ -2,8 +2,6 @@ package com.sky;
 
 import org.springframework.boot.*;
 import org.springframework.boot.autoconfigure.*;
-import org.springframework.stereotype.*;
-import org.springframework.web.bind.annotation.*;
 
 /**
  * Created by fmandryka on 20.07.2017.
