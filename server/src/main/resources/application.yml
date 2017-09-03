@@ -1,0 +1,24 @@
+application:
+  MeteoData:
+    apiKey: 81846cbf74af540396eb927af4425679
+    api:
+      uri:
+        currentMeteoData: http://api.openweathermap.org/data/2.5/weather?
+      params:
+        city: q
+        apiKey: appid
+
+server:
+  port: 8081
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:testdb;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
+    platform: h2
+  h2:
+    console:
+      path: /console
+      enabled: true

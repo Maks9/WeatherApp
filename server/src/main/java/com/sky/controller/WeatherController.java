@@ -31,7 +31,7 @@ public class WeatherController {
     @RequestMapping(value = "/get/city", method = RequestMethod.GET)
     public ResponseEntity<CurrentMeteorologicalData> getCurrentMeteorologicalData(@RequestParam String city) throws GetCurrentMeteoDataException {
 
-        ResponseEntity<CurrentMeteorologicalData> currentMeteorologicalData = new ResponseEntity<>(currentWeatherService.getWeatherByCityName(city), HttpStatus.OK);
+        ResponseEntity<CurrentMeteorologicalData> currentMeteorologicalData = new ResponseEntity<>(currentWeatherService.getCurrentMeteoData(city), HttpStatus.OK);
         LOGGER.info("CurrentMeteorologicalData get - OK, city name {}", city);
         return currentMeteorologicalData;
     }
