@@ -1,7 +1,7 @@
 package com.sky.controller;
 
-import com.exceptions.GetCurrentMeteoDataException;
-import com.service.CurrentWeatherService;
+import com.sky.exceptions.GetCurrentMeteoDataException;
+import com.sky.service.CurrentWeatherService;
 import com.sky.model.CurrentMeteorologicalData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

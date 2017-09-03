@@ -1,4 +1,4 @@
-package com.exceptions;
+package com.sky.exceptions;
 
 /**
  * Created by fmandryka on 28.08.2017.
