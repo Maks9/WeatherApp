@@ -92,8 +92,10 @@ public class CurrentMeteorologicalData {
     }
 
     @JsonProperty("sys")
-    public void setCountryCode(JsonNode sys) {
+    public void setCountryCodeSinriseSunset(JsonNode sys) {
         this.countryCode = sys.get("country").textValue();
+        this.sunrise = sys.get("sunrise").intValue();
+        this.sunset = sys.get("sunset").intValue();
     }
 
     public double getCoordLon() {
@@ -105,8 +107,9 @@ public class CurrentMeteorologicalData {
     }
 
     @JsonProperty("coord")
-    public void setCoordLon(JsonNode coord) {
+    public void setCoordLonLat(JsonNode coord) {
         this.coordLon = coord.get("lon").asDouble();
+        this.coordLat = coord.get("lat").asDouble();
     }
 
     public double getCoordLat() {
@@ -115,11 +118,6 @@ public class CurrentMeteorologicalData {
 
     public void setCoordLat(double coordLat) {
         this.coordLat = coordLat;
-    }
-
-    @JsonProperty("coord")
-    public void setCoordLat(JsonNode coord) {
-        this.coordLat = coord.get("lat").asDouble();
     }
 
     public String getWeatherStatus() {
@@ -132,7 +130,9 @@ public class CurrentMeteorologicalData {
 
     @JsonProperty("weather")
     public void setWeatherStatus(JsonNode weather) {
-        this.weatherStatus = weather.get("main").textValue();
+        this.weatherStatus = weather.get(0).get("main").textValue();
+        this.weatherDescription = weather.get(0).get("description").textValue();
+        this.weatherIconName = weather.get(0).get("icon").textValue();
     }
 
     public String getWeatherDescription() {
@@ -143,22 +143,12 @@ public class CurrentMeteorologicalData {
         this.weatherDescription = weatherDescription;
     }
 
-    @JsonProperty("weather")
-    public void setWeatherDescription(JsonNode weather) {
-        this.weatherDescription = weather.get("description").textValue();
-    }
-
     public String getWeatherIconName() {
         return weatherIconName;
     }
 
     public void setWeatherIconName(String weatherIconName) {
         this.weatherIconName = weatherIconName;
-    }
-
-    @JsonProperty("weather")
-    public void setWeatherIconName(JsonNode weather) {
-        this.weatherIconName = weather.get("icon").textValue();
     }
 
     public float getTemperature() {
@@ -170,8 +160,10 @@ public class CurrentMeteorologicalData {
     }
 
     @JsonProperty("main")
-    public void setTemperature(JsonNode main) {
+    public void setTempPressHumid(JsonNode main) {
         this.temperature = main.get("temp").floatValue();
+        this.pressure = main.get("pressure").shortValue();
+        this.humidity = main.get("humidity").shortValue();
     }
 
     public short getPressure() {
@@ -182,22 +174,12 @@ public class CurrentMeteorologicalData {
         this.pressure = pressure;
     }
 
-    @JsonProperty("main")
-    public void setPressure(JsonNode main) {
-        this.pressure = main.get("pressure").shortValue();
-    }
-
     public short getHumidity() {
         return humidity;
     }
 
     public void setHumidity(short humidity) {
         this.humidity = humidity;
-    }
-
-    @JsonProperty("main")
-    public void setHumidity(JsonNode main) {
-        this.humidity = main.get("humidity").shortValue();
     }
 
     public short getVisibility() {
@@ -218,8 +200,9 @@ public class CurrentMeteorologicalData {
     }
 
     @JsonProperty("wind")
-    public void setWindSpeed(JsonNode wind) {
+    public void setWind(JsonNode wind) {
         this.windSpeed = wind.get("speed").shortValue();
+        this.windDirection = wind.get("deg").shortValue();
     }
 
     public short getWindDirection() {
@@ -228,11 +211,6 @@ public class CurrentMeteorologicalData {
 
     public void setWindDirection(short windDirection) {
         this.windDirection = windDirection;
-    }
-
-    @JsonProperty("wind")
-    public void setWindDirection(JsonNode wind) {
-        this.windDirection = wind.get("deg").shortValue();
     }
 
     public float getRainVolume() {
@@ -282,22 +260,12 @@ public class CurrentMeteorologicalData {
         this.sunrise = sunrise;
     }
 
-    @JsonProperty("sys")
-    public void setSunrise(JsonNode sys) {
-        this.sunrise = sys.get("sunrise").intValue();
-    }
-
     public int getSunset() {
         return sunset;
     }
 
     public void setSunset(int sunset) {
         this.sunset = sunset;
-    }
-
-    @JsonProperty("sys")
-    public void setSunset(JsonNode sys) {
-        this.sunset = sys.get("sunset").intValue();
     }
 
     public int getTimeOfCalculation() {

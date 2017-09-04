@@ -24,13 +24,13 @@ public class CurrentWeatherServiceImpl implements CurrentWeatherService {
     private static final Logger LOGGER = LoggerFactory.getLogger(CurrentWeatherServiceImpl.class);
 
     private final CurrentWeatherRepository currentWeatherRepository;
-    private final AppPropertiesHolder.MeteoData weather;
+    private final AppPropertiesHolder.MeteoData meteoData;
     private final AppPropertiesHolder.MeteoData.Api api;
 
     @Autowired
     public CurrentWeatherServiceImpl(CurrentWeatherRepository currentWeatherRepository, AppPropertiesHolder appPropertyHolder) {
         this.currentWeatherRepository = currentWeatherRepository;
-        this.weather = appPropertyHolder.getMeteoData();
+        this.meteoData = appPropertyHolder.getMeteoData();
         this.api = appPropertyHolder.getMeteoData().getApi();
     }
 
@@ -41,7 +41,7 @@ public class CurrentWeatherServiceImpl implements CurrentWeatherService {
 
         URI request = UriComponentsBuilder.fromHttpUrl(api.getUri().getCurrentMeteoData())
                 .queryParam(api.getParams().getCity(), cityName)
-                .queryParam(api.getParams().getApiKey(), weather.getApiKey())
+                .queryParam(api.getParams().getApiKey(), meteoData.getApiKey())
                 .build().toUri();
 
         CurrentMeteorologicalData currentMeteorologicalData;

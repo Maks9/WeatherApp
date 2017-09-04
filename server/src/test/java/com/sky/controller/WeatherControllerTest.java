@@ -8,6 +8,7 @@ import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMock
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.TestPropertySource;
 import org.springframework.test.web.servlet.MockMvc;
+import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.web.util.UriComponentsBuilder;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -22,7 +23,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-@TestPropertySource(properties = {"port=8081", "host=http://localhost:"})
+@TestPropertySource(properties = {"port=8082", "host=http://localhost:"})
 public class WeatherControllerTest {
 
     @Autowired
@@ -35,22 +36,24 @@ public class WeatherControllerTest {
     private String host;
 
     @Test
-    public void testGetCurrentWeatherPositive() throws Exception {
-        URI request = UriComponentsBuilder.fromHttpUrl(host + port + "/weather/get")
+    public void testGetCurrentMeteoDataPositive() throws Exception {
+        URI request = UriComponentsBuilder.fromHttpUrl(host + port + "/get/city")
                 .queryParam("city", "Kiev").build().toUri();
 
-        mockMvc.perform(get(request)).andExpect(status().isOk());
+        RequestBuilder rb  = get(request);
+
+        mockMvc.perform(rb).andExpect(status().isOk());
     }
 
-    @Test
-    public void testGetCurrentWeatherWithCountryPositive() throws Exception {
-        URI request = UriComponentsBuilder.fromHttpUrl(host + port + "/weather/getWithCountryCode")
-                .queryParam("city", "Kiev")
-                .queryParam("countryCode", "UA")
-                .build().toUri();
-
-        mockMvc.perform(get(request)).andExpect(status().isOk());
-    }
+//    @Test
+//    public void testGetCurrentWeatherWithCountryPositive() throws Exception {
+//        URI request = UriComponentsBuilder.fromHttpUrl(host + port + "/weather/getWithCountryCode")
+//                .queryParam("city", "Kiev")
+//                .queryParam("countryCode", "UA")
+//                .build().toUri();
+//
+//        mockMvc.perform(get(request)).andExpect(status().isOk());
+//    }
 
     @Test
     public void testGetCurrentWeatherWithBadCountryPositive() throws Exception {
