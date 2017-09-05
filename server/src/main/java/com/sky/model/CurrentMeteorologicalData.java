@@ -41,7 +41,8 @@ public class CurrentMeteorologicalData {
     public CurrentMeteorologicalData(){
     }
 
-    public CurrentMeteorologicalData(int cityID, String cityName, String countryCode, double coordLon, double coordLat, String weatherStatus, String weatherDescription, String weatherIconName, float temperature, short pressure, short humidity, short visibility, float windSpeed, short windDirection, float rainVolume, float snowVolume, short cloudness, int sunrise, int sunset, int timeOfCalculation) {
+    public CurrentMeteorologicalData(int id, int cityID, String cityName, String countryCode, double coordLon, double coordLat, String weatherStatus, String weatherDescription, String weatherIconName, float temperature, short pressure, short humidity, short visibility, float windSpeed, short windDirection, float rainVolume, float snowVolume, short cloudness, int sunrise, int sunset, int timeOfCalculation) {
+        this.id = id;
         this.cityID = cityID;
         this.cityName = cityName;
         this.countryCode = countryCode;

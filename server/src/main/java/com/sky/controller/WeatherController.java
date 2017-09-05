@@ -28,7 +28,7 @@ public class WeatherController {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(WeatherController.class);
 
-    @RequestMapping(value = "/get/city", method = RequestMethod.GET)
+    @RequestMapping(value = "/meteo_data/get/city_only", method = RequestMethod.GET)
     public ResponseEntity<CurrentMeteorologicalData> getCurrentMeteorologicalData(@RequestParam String city) throws GetCurrentMeteoDataException {
 
         ResponseEntity<CurrentMeteorologicalData> currentMeteorologicalData = new ResponseEntity<>(currentWeatherService.getCurrentMeteoData(city), HttpStatus.OK);
@@ -36,4 +36,11 @@ public class WeatherController {
         return currentMeteorologicalData;
     }
 
+    @RequestMapping(value = "/meteo_data/get/city_with_code", method = RequestMethod.GET)
+    public ResponseEntity<CurrentMeteorologicalData> getCurrentMeteorologicalData(@RequestParam String city, @RequestParam String countryCode) throws GetCurrentMeteoDataException {
+
+        ResponseEntity<CurrentMeteorologicalData> currentMeteorologicalData = new ResponseEntity<>(currentWeatherService.getCurrentMeteoData(city, countryCode), HttpStatus.OK);
+        LOGGER.info("CurrentMeteorologicalData get - OK, city name {}", city);
+        return currentMeteorologicalData;
+    }
 }

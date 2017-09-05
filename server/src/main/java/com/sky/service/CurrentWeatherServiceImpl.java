@@ -45,9 +45,10 @@ public class CurrentWeatherServiceImpl implements CurrentWeatherService {
                 .build().toUri();
 
         CurrentMeteorologicalData currentMeteorologicalData;
-
+        Object o;
         try {
-            currentMeteorologicalData = restTemplate.getForObject(request, CurrentMeteorologicalData.class);
+            o = restTemplate.getForObject(request, Object.class);
+//            currentMeteorologicalData = restTemplate.getForObject(request, CurrentMeteorologicalData.class);
         } catch (RestClientException e) {
             LOGGER.error(String.format("Get current meteo data for %s - FAILED.", cityName), e);
             throw new GetCurrentMeteoDataException("Can't get current weather");
@@ -55,9 +56,12 @@ public class CurrentWeatherServiceImpl implements CurrentWeatherService {
 
         LOGGER.info(String.format("Get current weather for %s - OK.", cityName));
 
-        currentWeatherRepository.save(currentMeteorologicalData);
+//        currentWeatherRepository.save(currentMeteorologicalData);
 
-        return currentMeteorologicalData;
+        LOGGER.info(String.format("Current weather response for %s - saved in database", cityName));
+
+        return (CurrentMeteorologicalData) o;
+//        return currentMeteorologicalData;
 
     }
 

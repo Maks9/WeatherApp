@@ -35,31 +35,22 @@ public class WeatherControllerTest {
     @Value("${host}")
     private String host;
 
+
     @Test
-    public void testGetCurrentMeteoDataPositive() throws Exception {
-        URI request = UriComponentsBuilder.fromHttpUrl(host + port + "/get/city")
-                .queryParam("city", "Kiev").build().toUri();
+    public void testGetCurrentWeatherWithCountryPositive() throws Exception {
+        URI request = UriComponentsBuilder.fromHttpUrl(host + port + "/meteo_data/get/city_only")
+                .queryParam("city", "Kyiv")
+                .queryParam("countryCode", "UA")
+                .build().toUri();
 
-        RequestBuilder rb  = get(request);
-
-        mockMvc.perform(rb).andExpect(status().isOk());
+        mockMvc.perform(get(request)).andExpect(status().isOk());
     }
-
-//    @Test
-//    public void testGetCurrentWeatherWithCountryPositive() throws Exception {
-//        URI request = UriComponentsBuilder.fromHttpUrl(host + port + "/weather/getWithCountryCode")
-//                .queryParam("city", "Kiev")
-//                .queryParam("countryCode", "UA")
-//                .build().toUri();
-//
-//        mockMvc.perform(get(request)).andExpect(status().isOk());
-//    }
 
     @Test
     public void testGetCurrentWeatherWithBadCountryPositive() throws Exception {
-        URI request = UriComponentsBuilder.fromHttpUrl(host + port + "/weather/getWithCountryCode")
+        URI request = UriComponentsBuilder.fromHttpUrl(host + port + "/meteo_data/get/city_with_code")
                 .queryParam("city", "Kiev")
-                .queryParam("countryCode", "ufdsfsd")
+                .queryParam("countryCode", "not_exists")
                 .build().toUri();
 
         mockMvc.perform(get(request)).andExpect(status().is(200));
@@ -67,7 +58,7 @@ public class WeatherControllerTest {
 
     @Test
     public void testGetCurrentWeatherNegative() throws Exception {
-        URI request = UriComponentsBuilder.fromHttpUrl(host + port + "/weather/get")
+        URI request = UriComponentsBuilder.fromHttpUrl(host + port + "/meteo_data/get/city_only")
                 .queryParam("city", "Dfsdfdsfa").build().toUri();
 
         mockMvc.perform(get(request)).andExpect(status().is(400));
@@ -75,7 +66,7 @@ public class WeatherControllerTest {
 
     @Test
     public void testGetCurrentWeatherWithCountryNegative() throws Exception {
-        URI request = UriComponentsBuilder.fromHttpUrl(host + port + "/weather/getWithCountryCode")
+        URI request = UriComponentsBuilder.fromHttpUrl(host + port + "/meteo_data/get/city_with_code")
                 .queryParam("city", "dfdsfsdfds")
                 .queryParam("countryCode", "UA")
                 .build().toUri();
