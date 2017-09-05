@@ -18,13 +18,6 @@
             </v-btn>
         </v-toolbar>
 
-        <autocomplete
-                anchor="name"
-                label="name"
-                :options="options"
-                :on-select="getData">
-        </autocomplete>
-
         <v-layout class="pt-5 pl-5">
             <v-flex xs12 sm3>
                 <!--<v-flex xs12 sm2 offset-sm3>-->
@@ -39,24 +32,11 @@
 
 
     import someList from './Current.vue'
-    import Autocomplete from 'vue2-autocomplete-js';
-    import parced from '../city.list.json';
-    require('../node_modules/vue2-autocomplete-js/dist/style/vue2-autocomplete.css');
 
     export default {
         name: 'app',
-        components: {someList, Autocomplete},
-        data() {
-            return {
-                options: ["qqqqqq", "wwwww"]
-            }
-        },
+        components: {someList},
 
-        methods: {
-            getData(obj){
-                console.log(obj);
-            }
-        }
     }
 </script>
 

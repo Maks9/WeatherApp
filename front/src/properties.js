@@ -3,10 +3,9 @@
  */
 
 const PROPERTIES = {
-    HOST: 'api.openweathermap.org/data/2.5/',
-    CURRENT: 'weather',
+    HOST: 'http://localhost:8082',
+    CURRENT: '/meteo_data/get/city_with_code',
     FORECAST: 'forecast',
-    APPID: '81846cbf74af540396eb927af4425679'
 };
 
 export default PROPERTIES;
