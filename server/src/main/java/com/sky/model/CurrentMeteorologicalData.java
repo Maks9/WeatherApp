@@ -31,17 +31,17 @@ public class CurrentMeteorologicalData {
     private short windDirection;
     private float rainVolume;
     private float snowVolume;
-    private short cloudness;
+    private short cloudiness;
 
-    private int sunrise;
-    private int sunset;
+    private long sunrise;
+    private long sunset;
 
-    private int timeOfCalculation;
+    private long timeOfCalculation;
 
     public CurrentMeteorologicalData(){
     }
 
-    public CurrentMeteorologicalData(int id, int cityID, String cityName, String countryCode, double coordLon, double coordLat, String weatherStatus, String weatherDescription, String weatherIconName, float temperature, short pressure, short humidity, short visibility, float windSpeed, short windDirection, float rainVolume, float snowVolume, short cloudness, int sunrise, int sunset, int timeOfCalculation) {
+    public CurrentMeteorologicalData(int id, int cityID, String cityName, String countryCode, double coordLon, double coordLat, String weatherStatus, String weatherDescription, String weatherIconName, float temperature, short pressure, short humidity, short visibility, float windSpeed, short windDirection, float rainVolume, float snowVolume, short cloudiness, long sunrise, long sunset, long timeOfCalculation) {
         this.id = id;
         this.cityID = cityID;
         this.cityName = cityName;
@@ -59,29 +59,30 @@ public class CurrentMeteorologicalData {
         this.windDirection = windDirection;
         this.rainVolume = rainVolume;
         this.snowVolume = snowVolume;
-        this.cloudness = cloudness;
+        this.cloudiness = cloudiness;
         this.sunrise = sunrise;
         this.sunset = sunset;
         this.timeOfCalculation = timeOfCalculation;
     }
 
-
+    @JsonProperty("cityID")
     public int getCityID() {
         return cityID;
     }
 
     @JsonProperty("id")
-    public void setCityID(int cityID) {
-        this.cityID = cityID;
+    public void setCityID(JsonNode cityID) {
+        this.cityID = cityID.intValue();
     }
 
+    @JsonProperty("cityName")
     public String getCityName() {
         return cityName;
     }
 
     @JsonProperty("name")
-    public void setCityName(String cityName) {
-        this.cityName = cityName;
+    public void setCityName(JsonNode cityName) {
+        this.cityName = cityName.asText();
     }
 
     public String getCountryCode() {
@@ -227,6 +228,7 @@ public class CurrentMeteorologicalData {
         this.rainVolume = rain.get("3h").shortValue();
     }
 
+
     public float getSnowVolume() {
         return snowVolume;
     }
@@ -240,28 +242,28 @@ public class CurrentMeteorologicalData {
         this.snowVolume = snow.get("3h").shortValue();
     }
 
-    public short getCloudness() {
-        return cloudness;
+    public short getCloudiness() {
+        return cloudiness;
     }
 
-    public void setCloudness(short cloudness) {
-        this.cloudness = cloudness;
+    public void setCloudiness(short cloudiness) {
+        this.cloudiness = cloudiness;
     }
 
     @JsonProperty("clouds")
-    public void setCloudness(JsonNode clouds) {
-        this.cloudness = clouds.get("all").shortValue();
+    public void setCloudiness(JsonNode clouds) {
+        this.cloudiness = clouds.get("all").shortValue();
     }
 
-    public int getSunrise() {
+    public long getSunrise() {
         return sunrise;
     }
 
-    public void setSunrise(int sunrise) {
+    public void setSunrise(long sunrise) {
         this.sunrise = sunrise;
     }
 
-    public int getSunset() {
+    public long getSunset() {
         return sunset;
     }
 
@@ -269,13 +271,14 @@ public class CurrentMeteorologicalData {
         this.sunset = sunset;
     }
 
-    public int getTimeOfCalculation() {
+    @JsonProperty("timeOfCalculation")
+    public long getTimeOfCalculation() {
         return timeOfCalculation;
     }
 
     @JsonProperty("dt")
-    public void setTimeOfCalculation(int timeOfCalculation) {
-        this.timeOfCalculation = timeOfCalculation;
+    public void setTimeOfCalculation(JsonNode timeOfCalculation) {
+        this.timeOfCalculation = timeOfCalculation.longValue();
     }
 
 }

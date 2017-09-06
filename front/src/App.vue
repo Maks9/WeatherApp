@@ -1,17 +1,19 @@
 <template>
     <v-app>
         <v-toolbar dark class="primary">
-            <v-toolbar-side-icon></v-toolbar-side-icon>
+            <v-icon>filter_drama</v-icon>
             <v-toolbar-title class="white--text">Current weather and forecasts in your city</v-toolbar-title>
             <v-spacer></v-spacer>
-            <v-btn icon>
-                <v-icon>search</v-icon>
-            </v-btn>
-            <v-btn icon>
-                <v-icon>apps</v-icon>
-            </v-btn>
-            <v-btn icon>
-                <v-icon>refresh</v-icon>
+            <v-text-field
+                    solo
+                    label="Search"
+                    prepend-icon="search"
+                    v-if="searchTabShow"
+                    v-model="cityName"
+                    @keyup.enter="onEnter"
+            ></v-text-field>
+            <v-btn icon  @click.native.stop="searchTabShow = !searchTabShow" v-if="!searchTabShow">
+                <v-icon >search</v-icon>
             </v-btn>
             <v-btn icon>
                 <v-icon>more_vert</v-icon>
@@ -21,7 +23,7 @@
         <v-layout class="pt-5 pl-5">
             <v-flex xs12 sm3>
                 <!--<v-flex xs12 sm2 offset-sm3>-->
-                <some-list/>
+                <current-meteo-list city="cityName"></current-meteo-list>
             </v-flex>
         </v-layout>
         <!--<div>{{options}}</div>-->
@@ -31,12 +33,22 @@
 <script>
 
 
-    import someList from './Current.vue'
+    import currentMeteoList from './Current.vue'
 
     export default {
         name: 'app',
-        components: {someList},
-
+        components: {currentMeteoList},
+        data () {
+            return {
+                searchTabShow: false,
+                cityName: 'Kyiv'
+            }
+        },
+        methods: {
+            onEnter: function () {
+                this.$refs.currentMeteoList.fetchCurrentWeather();
+            }
+        }
     }
 </script>
 

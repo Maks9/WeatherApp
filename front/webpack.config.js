@@ -1,9 +1,15 @@
 var path = require('path')
 var vueLoaderConfig = require('./vue-loader.conf')
+var webpack = require('webpack');
 
 module.exports = {
     context: __dirname,
     entry: './src/main.js',
+    plugins: [
+        new webpack.LoaderOptionsPlugin({
+            debug: true
+        })
+    ],
     output: {
         path: path.resolve(__dirname, './build'),
         filename: 'bundle.js'

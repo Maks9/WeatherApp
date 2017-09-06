@@ -54,7 +54,7 @@ public class CurrentWeatherServiceImpl implements CurrentWeatherService {
 
         LOGGER.info(String.format("Get current weather for %s - OK.", cityName));
 
-        currentWeatherRepository.save(currentMeteorologicalData);
+//        currentWeatherRepository.save(currentMeteorologicalData);
 
         LOGGER.info(String.format("Current weather response for %s - saved in database", cityName));
 
