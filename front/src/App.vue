@@ -11,22 +11,29 @@
                     v-if="searchTabShow"
                     v-model="cityName"
                     @keyup.enter="onEnter"
+                    @blur="searchTabShow = !searchTabShow"
             ></v-text-field>
-            <v-btn icon  @click.native.stop="searchTabShow = !searchTabShow" v-if="!searchTabShow">
-                <v-icon >search</v-icon>
+            <v-btn icon @click.native.stop="searchTabShow = !searchTabShow" v-if="!searchTabShow">
+                <v-icon>search</v-icon>
             </v-btn>
             <v-btn icon>
                 <v-icon>more_vert</v-icon>
             </v-btn>
         </v-toolbar>
 
-        <v-layout class="pt-5 pl-5">
-            <v-flex xs12 sm3>
-                <!--<v-flex xs12 sm2 offset-sm3>-->
-                <current-meteo-list city="cityName"></current-meteo-list>
+        <v-container fluid grid-list-xs>
+        <v-layout class="pt-3 pl-3">
+            <v-flex xs9 sm6 md5 lg3 >
+                <current-meteo-list v-bind:meteoData="currentMeteoData"></current-meteo-list>
             </v-flex>
-        </v-layout>
-        <!--<div>{{options}}</div>-->
+            <v-flex xs9 class="pr-1 pl-3">
+                <v-card dark class="blue-grey">
+                    <v-card-text>Reserved for the forecast</v-card-text>
+                </v-card>
+            </v-flex>
+            </v-layout>
+        </v-container>
+
     </v-app>
 </template>
 
@@ -34,6 +41,8 @@
 
 
     import currentMeteoList from './Current.vue'
+    import axios from "axios";
+    import PROPERTIES from './properties'
 
     export default {
         name: 'app',
@@ -41,22 +50,35 @@
         data () {
             return {
                 searchTabShow: false,
-                cityName: 'Kyiv'
+                cityName: 'Kiev',
+                countryCode: "",
+                currentMeteoData: {}
             }
         },
         methods: {
             onEnter: function () {
-                this.$refs.currentMeteoList.fetchCurrentWeather();
-            }
+                this.fetchCurrentWeather();
+            },
+
+            fetchCurrentWeather: function () {
+                axios.get(PROPERTIES.HOST + '/meteo_data/get/city_with_code', {
+                    params: {
+                        city: this.cityName,
+                        countryCode: this.countryCode
+                    },
+                })
+                    .then((response) => {
+                        this.currentMeteoData = response.data
+                    });
+
+            },
+        },
+        created: function () {
+            this.fetchCurrentWeather();
         }
     }
 </script>
 
-<!--<style src="../vuetify.min.css" lang="css"></style>-->
-
 <!--<style lang="stylus">-->
-    <!--@import '../node_modules/vuetify/src/stylus/main.styl',-->
-<!--</style>-->
-<!--<style lang="css">-->
-    <!--@import '../node_modules/vue2-autocomplete-js/dist/style/vue2-autocomplete.css',-->
+<!--@import '../node_modules/vuetify/src/stylus/main.styl',-->
 <!--</style>-->
