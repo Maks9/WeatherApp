@@ -6,12 +6,11 @@ import com.sky.model.CurrentMeteorologicalData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import javax.servlet.http.HttpServletResponse;
 
 /**
  * Created by Admin on 17.08.2017.
@@ -42,5 +41,10 @@ public class WeatherController {
         ResponseEntity<CurrentMeteorologicalData> currentMeteorologicalData = new ResponseEntity<>(currentWeatherService.getCurrentMeteoData(city, countryCode), HttpStatus.OK);
         LOGGER.info("CurrentMeteorologicalData get - OK, city name {}", city);
         return currentMeteorologicalData;
+    }
+
+    @ModelAttribute
+    public void setVaryResponseHeader(HttpServletResponse response) {
+        response.setHeader("Access-Control-Allow-Origin", "*");
     }
 }
