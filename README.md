@@ -10,7 +10,7 @@ _Requirments_:
 _How to launch_:
 * `git clone https://github.com/Maks9/WeatherApp.git`
 * `cd WeatherApp/server/`
-* `mvn package`
+* `mvn package` (ensure variable M2_HOME exists and PATH contains M2_HOME/bin)
 * `cd target/`
 * `java -jar Weather_Server-1.0-TEST.jar`
 

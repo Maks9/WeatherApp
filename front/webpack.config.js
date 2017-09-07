@@ -1,6 +1,9 @@
 var path = require('path')
-var vueLoaderConfig = require('./vue-loader.conf')
 var webpack = require('webpack');
+
+function resolve (dir) {
+    return path.join(__dirname, '..', dir)
+}
 
 module.exports = {
     context: __dirname,
@@ -19,15 +22,15 @@ module.exports = {
             {
                 test: /\.vue$/,
                 loader: 'vue-loader',
-                // options: vueLoaderConfig
             },
-            // {
-            //     test: /\.json$/,
-            //     loader: 'json-loader'
-            // },
             {
                 test: /\.css$/,
                 loader: 'style-loader!css-loader'
+            },
+            {
+                test: /\.js$/,
+                loader: 'babel-loader',
+                include: [resolve('src'), resolve('test')]
             },
             // {
             //     test: /\.styl$/,
