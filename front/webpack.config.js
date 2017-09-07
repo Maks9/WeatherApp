@@ -7,7 +7,7 @@ function resolve (dir) {
 
 module.exports = {
     context: __dirname,
-    entry: './src/main.js',
+    entry: ["babel-polyfill", "./src/main.js"],
     plugins: [
         new webpack.LoaderOptionsPlugin({
             debug: true
