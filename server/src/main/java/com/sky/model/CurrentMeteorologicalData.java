@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.JsonNode;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 
@@ -11,6 +12,7 @@ import javax.persistence.Id;
 public class CurrentMeteorologicalData {
 
     @Id
+    @GeneratedValue
     private int id;
 
     private int cityID;

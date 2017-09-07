@@ -14,9 +14,6 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
 
-/**
- * Created by fmandryka on 18.08.2017.
- */
 
 @Service
 public class CurrentWeatherServiceImpl implements CurrentWeatherService {
@@ -42,6 +39,7 @@ public class CurrentWeatherServiceImpl implements CurrentWeatherService {
         URI request = UriComponentsBuilder.fromHttpUrl(api.getUri().getCurrentMeteoData())
                 .queryParam(api.getParams().getCity(), cityName)
                 .queryParam(api.getParams().getApiKey(), meteoData.getApiKey())
+                .queryParam("units", "metric")
                 .build().toUri();
 
         CurrentMeteorologicalData currentMeteorologicalData;
@@ -54,7 +52,7 @@ public class CurrentWeatherServiceImpl implements CurrentWeatherService {
 
         LOGGER.info(String.format("Get current weather for %s - OK.", cityName));
 
-//        currentWeatherRepository.save(currentMeteorologicalData);
+        currentWeatherRepository.save(currentMeteorologicalData);
 
         LOGGER.info(String.format("Current weather response for %s - saved in database", cityName));
 

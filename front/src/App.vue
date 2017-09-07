@@ -50,7 +50,7 @@
         data () {
             return {
                 searchTabShow: false,
-                cityName: 'Kiev',
+                cityName: 'Lviv',
                 countryCode: "",
                 currentMeteoData: {}
             }
@@ -61,7 +61,7 @@
             },
 
             fetchCurrentWeather: function () {
-                axios.get(PROPERTIES.HOST + '/meteo_data/get/city_with_code', {
+                axios.get(PROPERTIES.HOST + '/current/meteo_data/getWithCountryCode', {
                     params: {
                         city: this.cityName,
                         countryCode: this.countryCode
