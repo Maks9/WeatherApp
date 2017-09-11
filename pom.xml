@@ -7,11 +7,10 @@
     <groupId>WeatherApp</groupId>
     <artifactId>WeatherApp</artifactId>
     <version>1.0-TEST</version>
-
+         
     <modules>
         <module>server</module>
     </modules>
-
     <packaging>pom</packaging>
 
 </project>
