@@ -30,3 +30,24 @@ Country name must contain 2-letters country code like UA for Ukraine, this param
 All requests are saved to the H2 database. You can use H2 Console to check out database. It is available on `localhost:8082/console` (user: admin, password - leave blank, JDBC URL - jdbc:h2:mem:testdb).
 
 ## WeatherApp - front-end view
+
+## Requirements
+* Npm 3+
+* Node.js 6+
+
+## Build Setup
+
+``` bash
+# change directory
+cd front
+
+# install dependencies
+npm install
+
+# start in development mode with hot reload at localhost:8080
+npm run dev
+
+# build for production with minification
+npm run build
+```
+Application is available on ```http://localhost:8080```. You could change host and port property in config file ```src/properties.js```. 
