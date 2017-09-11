@@ -31,11 +31,11 @@ All requests are saved to the H2 database. You can use H2 Console to check out d
 
 ## WeatherApp - front-end view
 
-## Requirements
+_Requirements_:
 * Npm 3+
 * Node.js 6+
 
-## Build Setup
+_How to Build and launch:_
 
 ``` bash
 # change directory
